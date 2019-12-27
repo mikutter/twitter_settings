@@ -16,6 +16,7 @@ UserConfig[:update_queue_delay] ||= 100
 UserConfig[:favorite_queue_delay] ||= 100
 UserConfig[:follow_queue_delay] ||= 100
 UserConfig[:direct_message_queue_delay] ||= 100
+UserConfig[:filter_realtime_rewind] ||= true
 UserConfig[:anti_retrieve_fail] ||= false
 
 Plugin.create(:twitter_settings) do
@@ -56,6 +57,11 @@ Plugin.create(:twitter_settings) do
       adjustment(_('ふぁぼられ'), :favorite_queue_delay, 100, 10000)
       adjustment(_('フォロワー'), :follow_queue_delay, 100, 10000)
       adjustment(_('ダイレクトメッセージ'), :direct_message_queue_delay, 100, 10000)
+    end
+
+    settings _('リアルタイム更新') do
+      boolean(_('リスト(Streaming API)'), :filter_realtime_rewind).
+        tooltip _('Twitter の Streaming APIを用いて、リアルタイムにリストの更新等を受け取ります')
     end
 
     settings(_('その他')) do
