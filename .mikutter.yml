@@ -1,11 +1,10 @@
 ---
-slug: :twitter_settings
-depends:
-  mikutter: '4.0.0'
-  plugin:
+:slug: :twitter_settings
+:depends:
+  :mikutter: 4.0.0
+  :plugin:
   - settings
-version: '1.0'
-author: toshi_a
-name: Twitter Settings
-description: >-
-  Twitterの基本設定UIを提供します。
+:version: '1.1'
+:author: toshi_a
+:name: Twitter Settings
+:description: Twitterの基本設定UIを提供します。
