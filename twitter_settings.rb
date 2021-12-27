@@ -17,6 +17,7 @@ UserConfig[:favorite_queue_delay] ||= 100
 UserConfig[:follow_queue_delay] ||= 100
 UserConfig[:direct_message_queue_delay] ||= 100
 UserConfig[:filter_realtime_rewind] ||= true
+UserConfig[:filter_dont_exclude_retweet] ||= false
 UserConfig[:anti_retrieve_fail] ||= false
 
 Plugin.create(:twitter_settings) do
@@ -62,6 +63,8 @@ Plugin.create(:twitter_settings) do
     settings _('リアルタイム更新') do
       boolean(_('リスト(Streaming API)'), :filter_realtime_rewind).
         tooltip _('Twitter の Streaming APIを用いて、リアルタイムにリストの更新等を受け取ります')
+      boolean(_('StreamingにRTを含める'), :filter_dont_exclude_retweet).
+        tooltip _('サードパーティープラグインでRTをStreaming受信したい場合に有効にします。副作用として既存プラグインに意図しないRTが表示される場合があります ')
     end
 
     settings(_('その他')) do
